@@ -4,9 +4,19 @@ void main() {
     Book book3 = new Book("Kurt Vonnegut", "Slaughterhouse Five", "9780224618014", 3);
 
     Member member1 = new Member("Donald Trump", "54353");
+    Member member2 = new Member("Jørgen Leth", "54354");
+    Member member3 = new Member("Pelle Dragsted", "54355");
+    Loan loan1 = new Loan(book1, member1, LocalDate.now());
+    //IO.println(loan1);
 
-    book1.loanBook(member1);
-    IO.println(book1);
-    book1.returnBook();
-    IO.println(book1);
+    Library library = new Library();
+    library.addBook(book1);
+    library.addBook(book2);
+    library.addBook(book3);
+    library.addMember(member1);
+    library.addMember(member2);
+    library.addMember(member3);
+
+    library.printBooks();
+    library.printMembers();
 }
