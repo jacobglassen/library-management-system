@@ -21,9 +21,9 @@ public class Loan {
         return borrowedDate.plusDays(14);
     }
     public boolean isOverdue(){
-        return borrowedDate.isAfter(getDueDate());
+        return LocalDate.now().isAfter(getDueDate());
     }
     public String toString(){
-        return (getBook() + "\n" + getMember() + "\n" + "afleveringsfrist " + getDueDate());
+        return (getBook() + "\n" + getMember() + "\n" + "afleveringsfrist " + getDueDate() + "\n");
     }
 }

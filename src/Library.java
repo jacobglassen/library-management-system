@@ -67,8 +67,7 @@ public class Library {
             if (loans.get(i).getBook().getId() == bookId){
                 loans.remove(i);
                 return true;
-            } else {
-                return false;
+
             }
         }
         return false;
@@ -79,7 +78,8 @@ public class Library {
             if (loan.getMember().getId() == memberId){
                 memberLoans.add(loan);
             }
-        } return memberLoans;
+        }
+        return memberLoans;
     }
 
     public void printMembers() {
