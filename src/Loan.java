@@ -10,6 +10,7 @@ public class Loan {
         this.member = member;
         this.borrowedDate = borrowedDate;
     }
+
     public Book getBook(){
         return book;
     }
@@ -20,7 +21,7 @@ public class Loan {
         return borrowedDate.plusDays(14);
     }
     public boolean isOverdue(){
-        return borrowedDate.isAfter(borrowedDate.plusDays(14));
+        return borrowedDate.isAfter(getDueDate());
     }
     public String toString(){
         return (getBook() + "\n" + getMember() + "\n" + "afleveringsfrist " + getDueDate());

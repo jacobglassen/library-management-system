@@ -3,10 +3,10 @@ void main() {
     Book book2 = new Book("Homer", "The Odyssey", "9780060904791", 2);
     Book book3 = new Book("Kurt Vonnegut", "Slaughterhouse Five", "9780224618014", 3);
 
-    Member member1 = new Member("Donald Trump", "54353");
-    Member member2 = new Member("Jørgen Leth", "54354");
-    Member member3 = new Member("Pelle Dragsted", "54355");
-    Loan loan1 = new Loan(book1, member1, LocalDate.now());
+    Member member1 = new Member("Donald Trump", 54353);
+    Member member2 = new Member("Jørgen Leth", 54354);
+    Member member3 = new Member("Pelle Dragsted", 54355);
+    //Loan loan1 = new Loan(book1, member1, LocalDate.now());
     //IO.println(loan1);
 
     Library library = new Library();
@@ -17,6 +17,17 @@ void main() {
     library.addMember(member2);
     library.addMember(member3);
 
-    library.printBooks();
-    library.printMembers();
-}
+
+    Book foundBook = library.getBook(1);
+    IO.println(foundBook);
+
+    Member foundMember = library.getMemberId(54355);
+    IO.println(foundMember);
+    IO.println(library.loanBook(1, 54355));
+    ArrayList<Loan> loans = library.getLoans();
+    ArrayList<Loan> loansByMember = library.findLoansByMemberId(54355);
+    IO.println("-----------");
+     IO.println(loansByMember);
+
+
+    }
