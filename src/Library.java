@@ -34,14 +34,14 @@ public class Library {
     }
     public Book getBook(int bookId){
         for (Book book : books){
-            if (book.getId() == bookId){
+            if (book.id() == bookId){
                 return book;
             }
         } return null;
     }
     public Member getMemberId(int memberId){
         for (Member member : members){
-            if (member.getId() == memberId){
+            if (member.memberId() == memberId){
                 return member;
             }
         } return null;
@@ -51,7 +51,7 @@ public class Library {
         Member member = getMemberId(memberId);
         if (book == null || member == null) return false;
         for (Loan loan : loans){
-            if (loan.getBook().getId() == bookId){
+            if (loan.getBook().id() == bookId){
                 return false;
             }
         }
@@ -64,7 +64,7 @@ public class Library {
         Book book = getBook(bookId);
         if (book == null) return false;
         for (int i = 0; i < loans.size(); i++){
-            if (loans.get(i).getBook().getId() == bookId){
+            if (loans.get(i).getBook().id() == bookId){
                 loans.remove(i);
                 return true;
 
@@ -75,7 +75,7 @@ public class Library {
     public ArrayList<Loan> findLoansByMemberId(int memberId){
         ArrayList<Loan> memberLoans = new ArrayList<Loan>();
         for (Loan loan : loans){
-            if (loan.getMember().getId() == memberId){
+            if (loan.getMember().memberId() == memberId){
                 memberLoans.add(loan);
             }
         }

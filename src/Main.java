@@ -15,6 +15,7 @@ void main() {
     library.addMember(member1);
     library.addMember(member2);
     library.addMember(member3);
+
     consoleUI.run();
 
 
