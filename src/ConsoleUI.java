@@ -31,12 +31,13 @@ public class ConsoleUI {
     private void borrowBook(){
         int bookId = Integer.parseInt(IO.readln("Angiv bogens ID: "));
         int memberId = Integer.parseInt(IO.readln("Angiv dit medlemsnummer: "));
-        boolean isLoaned = library.loanBook(bookId, memberId);
+        LoanResult isLoaned = library.loanBook(bookId, memberId);
 
-        if (isLoaned){
-            IO.println("Lån registreret");
-        } else{
-            IO.println("Der er sket en fejl");
+        switch (isLoaned){
+            case SUCCESS -> IO.println("Lån registreret");
+            case ALREADY_LOANED -> IO.println("Materialet er allerede udlånt");
+            case MATERIAL_NOT_FOUND -> IO.println("Dette materiale findes ikke");
+            case MEMBER_NOT_FOUND -> IO.println("Medlem findes ikke");
         }
     }
     private void returnBook(){

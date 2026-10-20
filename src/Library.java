@@ -58,18 +58,19 @@ public class Library {
             }
         } return null;
     }
-    public boolean loanBook(int bookId, int memberId){
+    public LoanResult loanBook(int bookId, int memberId){
         Resource resource = getBook(bookId);
         Member member = getMemberId(memberId);
-        if (resource == null || member == null) return false;
+        if (resource == null) return LoanResult.MATERIAL_NOT_FOUND;
+        if (member == null) return LoanResult.MEMBER_NOT_FOUND;
         for (Loan loan : loans){
             if (loan.getResource().getIdentifier() == bookId){
-                return false;
+                return LoanResult.ALREADY_LOANED;
             }
         }
         Loan loan = new Loan(resource, member, LocalDate.now());
         loans.add(loan);
-        return true;
+        return LoanResult.SUCCESS;
 
     }
     public boolean returnBook(int bookId){

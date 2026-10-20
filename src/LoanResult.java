@@ -1,0 +1,9 @@
+public enum LoanResult {
+    SUCCESS,
+    BOOK_NOT_FOUND,
+    MOVIE_NOT_FOUND,
+    VIDEOGAME_NOT_FOUND,
+    ALREADY_LOANED,
+    MATERIAL_NOT_FOUND,
+    MEMBER_NOT_FOUND
+}
