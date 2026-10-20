@@ -1,18 +1,18 @@
 import java.time.LocalDate;
 
 public class Loan {
-    final Book book;
+    final Resource resource;
     final Member member;
     final LocalDate borrowedDate;
 
-    public Loan(Book book, Member member, LocalDate borrowedDate){
-        this.book = book;
+    public Loan(Resource resource, Member member, LocalDate borrowedDate){
+        this.resource = resource;
         this.member = member;
         this.borrowedDate = borrowedDate;
     }
 
-    public Book getBook(){
-        return book;
+    public Resource getResource(){
+        return resource;
     }
     public Member getMember(){
         return member;
@@ -24,6 +24,6 @@ public class Loan {
         return LocalDate.now().isAfter(getDueDate());
     }
     public String toString(){
-        return (getBook() + "\n" + getMember() + "\n" + "afleveringsfrist " + getDueDate() + "\n");
+        return (getResource() + "\n" + getMember() + "\n" + "afleveringsfrist " + getDueDate() + "\n");
     }
 }

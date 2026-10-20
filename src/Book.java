@@ -1,8 +1,12 @@
-public record Book(String author, String title, String isbn, int id) {
+public class Book extends Resource{
+    int pages;
+    public Book(int identifier, String title, String creator, int pages) {
+        super(identifier, title, creator);
+        this.pages = pages;
+    }
     @Override
-    public String toString() {
+    public String toString(){
         return String.format("""
-                        %s: %s; ISBN %s (%d)""",
-                author, title, isbn, id);
+                %s - %s; %d""", creator, title, Identifier);
     }
 }
