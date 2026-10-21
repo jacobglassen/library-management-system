@@ -6,4 +6,10 @@ double length;
         this.director = director;
         this.length = length;
     }
+    @Override
+    public String toString(){
+        return String.format("""
+                %s - %s, %s; %s
+                Runtime: %f.2 minutes""", title, director, creator, Identifier, length);
+    }
 }

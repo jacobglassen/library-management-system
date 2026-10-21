@@ -3,14 +3,9 @@ import java.time.LocalDate;
 
 
 public class Library {
-//    private ArrayList<Book> books = new ArrayList<>();
     private ArrayList<Resource> resources = new ArrayList<>();
     private ArrayList<Member> members = new ArrayList<>();
     private ArrayList<Loan> loans = new ArrayList<>();
-
-//    public void addBook(Book book) {
-//        books.add(book);
-//    }
 
     public void addMember(Member member) {
         members.add(member);
@@ -25,10 +20,6 @@ public class Library {
     public ArrayList<Resource> getResources() {
         return resources;
     }
-
-//    public ArrayList<Book> getBooks() {
-//        return books;
-//    }
 
     public ArrayList<Member> getMembers() {
         return members;
@@ -100,7 +91,24 @@ public class Library {
             IO.println(member);
         }
     }
+    public void createResource(){
+        Book book1 = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
+        Movie movie1 = new Movie(20, "Human Centipede", "MF Studios", "Mads Frahm", 120.20);
+        VideoGame videoGame1 = new VideoGame(50, "abc", "def", "fld,sæfs");
+        resources.add(book1);
+        resources.add(movie1);
+        resources.add(videoGame1);
 
+    }
+    public void createMembers(){
+        Member member1 = new Member("Donald Trump", 1);
+        Member member2 = new Member("Jørgen Leth", 2);
+        Member member3 = new Member("Pelle Dragsted", 3);
+
+        members.add(member1);
+        members.add(member2);
+        members.add(member3);
+    }
 
 }
 

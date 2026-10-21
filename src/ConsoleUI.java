@@ -7,13 +7,15 @@ public class ConsoleUI {
         this.library = library;
     }
     public void run(){
+        library.createMembers();
+        library.createResource();
         boolean running = true;
         while (running){
             showMenu();
             int choice = Integer.parseInt(IO.readln("Indtast hvilken menu, du vil tilgå: "));
             switch (choice){
-                case 1 -> borrowBook();
-                case 2 -> returnBook();
+                case 1 -> borrowResource();
+                case 2 -> returnResource();
                 case 3 -> showLoans();
                 case 0 -> running = false;
                 default -> IO.println("Ugyldigt valg. Prøv igen");
@@ -28,10 +30,10 @@ public class ConsoleUI {
         IO.println("0. Afslut");
         IO.println();
     }
-    private void borrowBook(){
-        int bookId = Integer.parseInt(IO.readln("Angiv bogens ID: "));
+    private void borrowResource(){
+        int id = Integer.parseInt(IO.readln("Angiv materialets ID: "));
         int memberId = Integer.parseInt(IO.readln("Angiv dit medlemsnummer: "));
-        LoanResult isLoaned = library.loanBook(bookId, memberId);
+        LoanResult isLoaned = library.loanBook(id, memberId);
 
         switch (isLoaned){
             case SUCCESS -> IO.println("Lån registreret");
@@ -40,10 +42,10 @@ public class ConsoleUI {
             case MEMBER_NOT_FOUND -> IO.println("Medlem findes ikke");
         }
     }
-    private void returnBook(){
-        int bookId = Integer.parseInt(IO.readln("Angiv bogens ID: "));
+    private void returnResource(){
+        int id = Integer.parseInt(IO.readln("Angiv materialets ID: "));
 
-        boolean canReturn = library.returnBook(bookId);
+        boolean canReturn = library.returnBook(id);
 
         if (canReturn){
             IO.println("Aflevering registreret");

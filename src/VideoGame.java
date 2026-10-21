@@ -4,4 +4,9 @@ public class VideoGame extends Resource{
         super(identifier, title, creator);
         this.platform = platform;
     }
+    @Override
+    public String toString(){
+        return String.format("""
+                %s - %s, %s; %d""", title, creator, platform, Identifier);
+    }
 }
