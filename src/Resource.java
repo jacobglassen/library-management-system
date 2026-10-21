@@ -1,4 +1,4 @@
-public class Resource {
+    public class Resource {
     int Identifier;
     String title;
     String creator;
