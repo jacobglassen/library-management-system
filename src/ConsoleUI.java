@@ -43,9 +43,15 @@ public class ConsoleUI {
         }
     }
     private void returnResource(){
-        int id = Integer.parseInt(IO.readln("Angiv materialets ID: "));
+        int id = Integer.parseInt(
+                IO.readln("Angiv materialets ID: ")
+        );
 
-        boolean canReturn = library.returnBook(id);
+        int memberId = Integer.parseInt(
+                IO.readln("Angiv dit medlemsnummer: ")
+        );
+
+        boolean canReturn = library.returnBook(id, memberId);
 
         if (canReturn){
             IO.println("Aflevering registreret");

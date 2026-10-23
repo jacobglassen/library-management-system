@@ -4,9 +4,12 @@ public class Book extends Resource{
         super(identifier, title, creator);
         this.pages = pages;
     }
+    public int getPages(){
+        return pages;
+    }
     @Override
     public String toString(){
         return String.format("""
-                %s - %s; %d""", creator, title, Identifier);
+                %s - %s; %d""", creator, title, Identifier, pages);
     }
 }
