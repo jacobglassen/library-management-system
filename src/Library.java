@@ -64,11 +64,12 @@ public class Library {
         return LoanResult.SUCCESS;
 
     }
-    public boolean returnBook(int bookId){
-        Resource resource = getBook(bookId);
-        if (resource == null) return false;
+    public boolean returnBook(int bookId, int memberId){
         for (int i = 0; i < loans.size(); i++){
-            if (loans.get(i).getResource().getIdentifier() == bookId){
+            Loan loan = loans.get(i);
+            if (loan.getResource().getIdentifier() == bookId
+                    && loan.getMember().memberId() == memberId) {
+
                 loans.remove(i);
                 return true;
 
