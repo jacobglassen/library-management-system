@@ -20,7 +20,7 @@ public class LibraryTest {
     void testLoanWithUnknownMember() {
 
         // Act
-        LoanResult result = library.loanBook(9780, 22222);
+        LoanResult result = library.loanResource(9780, 22222);
 
         // Assert
         assertEquals(LoanResult.MEMBER_NOT_FOUND, result);
@@ -30,10 +30,10 @@ public class LibraryTest {
 
 
         // First loan succeeds
-        library.loanBook(book.getIdentifier(), member.memberId());
+        library.loanResource(book.getIdentifier(), member.memberId());
 
         // Act
-        LoanResult result = library.loanBook(book.getIdentifier(), member.memberId());
+        LoanResult result = library.loanResource(book.getIdentifier(), member.memberId());
 
         // Assert
         assertEquals(LoanResult.ALREADY_LOANED, result);
@@ -43,7 +43,7 @@ public class LibraryTest {
 
 
         //Act
-        LoanResult result = library.loanBook(9999, member.memberId());
+        LoanResult result = library.loanResource(9999, member.memberId());
 
         //Assert
         assertEquals(LoanResult.MATERIAL_NOT_FOUND, result);
@@ -53,7 +53,7 @@ public class LibraryTest {
 
 
         //Act
-        LoanResult result = library.loanBook(book.getIdentifier(), member.memberId());
+        LoanResult result = library.loanResource(book.getIdentifier(), member.memberId());
 
         //Assert
         assertEquals(LoanResult.SUCCESS, result);

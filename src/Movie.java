@@ -10,6 +10,6 @@ double length;
     public String toString(){
         return String.format("""
                 %s - %s, %s; %s
-                Runtime: %f.2 minutes""", title, director, creator, Identifier, length);
+                Runtime: %.2f minutes""", title, director, creator, Identifier, length);
     }
 }

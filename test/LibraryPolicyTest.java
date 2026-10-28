@@ -25,7 +25,7 @@ public class LibraryPolicyTest {
     @Test
     void testLibraryCallsCanLoan(){
         //Act
-        LoanResult result = library.loanBook(9780, 1);
+        LoanResult result = library.loanResource(9780, 1);
         boolean canLoanIsCalled = testDouble.canLoanCalled;
 
         //Assert
@@ -48,10 +48,10 @@ public class LibraryPolicyTest {
         library1.addResource(vg1);
 
         //Act
-        assertEquals(LoanResult.SUCCESS, library1.loanBook(1,1));
-        assertEquals(LoanResult.SUCCESS, library1.loanBook(2,1));
-        assertEquals(LoanResult.SUCCESS, library1.loanBook(3,1));
-        assertEquals(LoanResult.NOT_ALLOWED, library1.loanBook(4,1));
+        assertEquals(LoanResult.SUCCESS, library1.loanResource(1,1));
+        assertEquals(LoanResult.SUCCESS, library1.loanResource(2,1));
+        assertEquals(LoanResult.SUCCESS, library1.loanResource(3,1));
+        assertEquals(LoanResult.NOT_ALLOWED, library1.loanResource(4,1));
     }
     @Test
     void testCanLoanBornholmPolicy(){

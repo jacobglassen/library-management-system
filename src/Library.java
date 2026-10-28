@@ -41,9 +41,9 @@ public class Library {
             IO.println(resource);
         }}
     }
-    public Resource getBook(int bookId){
+    public Resource getResource(int resourceId){
         for (Resource resource : resources){
-            if (resource.getIdentifier() == bookId){
+            if (resource.getIdentifier() == resourceId){
                 return resource;
             }
         } return null;
@@ -55,14 +55,14 @@ public class Library {
             }
         } return null;
     }
-    public LoanResult loanBook(int bookId, int memberId){
-        Resource resource = getBook(bookId);
+    public LoanResult loanResource(int resourceId, int memberId){
+        Resource resource = getResource(resourceId);
         Member member = getMemberId(memberId);
         if (resource == null) return LoanResult.MATERIAL_NOT_FOUND;
         if (member == null) return LoanResult.MEMBER_NOT_FOUND;
         if (!(loanPolicy.canLoan(member, resource, loans))) return LoanResult.NOT_ALLOWED;
         for (Loan loan : loans){
-            if (loan.getResource().getIdentifier() == bookId){
+            if (loan.getResource().getIdentifier() == resourceId){
                 return LoanResult.ALREADY_LOANED;
             }
         }
@@ -86,7 +86,7 @@ public class Library {
         }
         return false;
     }
-    public List<Loan> findLoansByMemberId(int memberId){
+    public ArrayList<Loan> findLoansByMemberId(int memberId){
         ArrayList<Loan> memberLoans = new ArrayList<>();
         for (Loan loan : loans){
             if (loan.getMember().memberId() == memberId){

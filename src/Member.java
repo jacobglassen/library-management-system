@@ -2,7 +2,8 @@ public record Member(String name, int memberId) {
     @Override
     public String toString(){
         return String.format("""
-                    %s (medlemsnummer: %d)""", name, memberId);
+                    %s
+                    Medlemsnummer: %d""", name, memberId);
     }
 }
 

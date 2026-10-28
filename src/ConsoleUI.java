@@ -33,7 +33,7 @@ public class ConsoleUI {
     private void borrowResource(){
         int id = Integer.parseInt(IO.readln("Angiv materialets ID: "));
         int memberId = Integer.parseInt(IO.readln("Angiv dit medlemsnummer: "));
-        LoanResult isLoaned = library.loanBook(id, memberId);
+        LoanResult isLoaned = library.loanResource(id, memberId);
 
         switch (isLoaned){
             case SUCCESS -> IO.println("Lån registreret");
