@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class ConsoleUI {
-    private Library library;
+    private final Library library;
 
     public ConsoleUI(Library library){
         this.library = library;
@@ -40,6 +40,7 @@ public class ConsoleUI {
             case ALREADY_LOANED -> IO.println("Materialet er allerede udlånt");
             case MATERIAL_NOT_FOUND -> IO.println("Dette materiale findes ikke");
             case MEMBER_NOT_FOUND -> IO.println("Medlem findes ikke");
+            case NOT_ALLOWED -> IO.println("Dette materiale kan desværre ikke udlånes");
         }
     }
     private void returnResource(){

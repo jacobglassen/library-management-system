@@ -4,11 +4,13 @@ public class Loan {
     final Resource resource;
     final Member member;
     final LocalDate borrowedDate;
+    final LocalDate dueDate;
 
-    public Loan(Resource resource, Member member, LocalDate borrowedDate){
+    public Loan(Resource resource, Member member, LocalDate borrowedDate, LocalDate dueDate){
         this.resource = resource;
         this.member = member;
         this.borrowedDate = borrowedDate;
+        this.dueDate = dueDate;
     }
 
     public Resource getResource(){

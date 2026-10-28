@@ -1,33 +1,33 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LibraryTest {
+    private Library library;
+    private Member member;
+    private Book book;
+    @BeforeEach
+    void setup(){
+        //Arrange
+        library = new Library(new StandardLoanPolicy());
+        member = new Member("Donald Trump", 1);
+        book = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
+        library.addMember(member);
+        library.addResource(book);
+    }
     @Test
     void testLoanWithUnknownMember() {
-        // Arrange
-        Library library = new Library();
-        Member member = new Member("Donald Trump", 1);
-        Book book = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
-
-        library.addResource(book);
 
         // Act
-        LoanResult result = library.loanBook(book.getIdentifier(), member.memberId());
+        LoanResult result = library.loanBook(9780, 22222);
 
         // Assert
         assertEquals(LoanResult.MEMBER_NOT_FOUND, result);
     }
     @Test
     void testLoanWhenBookIsNotAvailable() {
-        // Arrange
-        Library library = new Library();
 
-        Member member = new Member("Donald Trump", 1);
-        Book book = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
-
-        library.addMember(member);
-        library.addResource(book);
 
         // First loan succeeds
         library.loanBook(book.getIdentifier(), member.memberId());
@@ -40,10 +40,7 @@ public class LibraryTest {
     }
     @Test
     void testLoanWithUnknownBook(){
-        //Arrange
-        Library library = new Library();
-        Member member = new Member("Donald Trump", 1);
-        library.addMember(member);
+
 
         //Act
         LoanResult result = library.loanBook(9999, member.memberId());
@@ -53,12 +50,7 @@ public class LibraryTest {
     }
     @Test
     void testSuccessfulLoan(){
-        //Arrange
-        Library library = new Library();
-        Member member = new Member("Donald Trump", 1);
-        Book book = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
-        library.addMember(member);
-        library.addResource(book);
+
 
         //Act
         LoanResult result = library.loanBook(book.getIdentifier(), member.memberId());

@@ -1,11 +1,17 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Library {
-    private ArrayList<Resource> resources = new ArrayList<>();
-    private ArrayList<Member> members = new ArrayList<>();
-    private ArrayList<Loan> loans = new ArrayList<>();
+    private final List<Resource> resources = new ArrayList<>();
+    private final List<Member> members = new ArrayList<>();
+    private final List<Loan> loans = new ArrayList<>();
+    private final LoanPolicy loanPolicy;
+
+    public Library(LoanPolicy loanPolicy) {
+        this.loanPolicy = loanPolicy;
+    }
 
     public void addMember(Member member) {
         members.add(member);
@@ -17,15 +23,15 @@ public class Library {
         resources.remove(resource);
     }
 
-    public ArrayList<Resource> getResources() {
+    public List<Resource> getResources() {
         return resources;
     }
 
-    public ArrayList<Member> getMembers() {
+    public List<Member> getMembers() {
         return members;
     }
 
-    public ArrayList<Loan> getLoans() {
+    public List<Loan> getLoans() {
         return loans;
     }
 
@@ -54,12 +60,15 @@ public class Library {
         Member member = getMemberId(memberId);
         if (resource == null) return LoanResult.MATERIAL_NOT_FOUND;
         if (member == null) return LoanResult.MEMBER_NOT_FOUND;
+        if (!(loanPolicy.canLoan(member, resource, loans))) return LoanResult.NOT_ALLOWED;
         for (Loan loan : loans){
             if (loan.getResource().getIdentifier() == bookId){
                 return LoanResult.ALREADY_LOANED;
             }
         }
-        Loan loan = new Loan(resource, member, LocalDate.now());
+        LocalDate loanDate = LocalDate.now();
+        LocalDate dueDate =loanPolicy.calculateDueDate(resource, loanDate);
+        Loan loan = new Loan(resource, member, loanDate, dueDate);
         loans.add(loan);
         return LoanResult.SUCCESS;
 
