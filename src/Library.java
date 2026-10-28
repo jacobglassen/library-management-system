@@ -86,8 +86,8 @@ public class Library {
         }
         return false;
     }
-    public ArrayList<Loan> findLoansByMemberId(int memberId){
-        ArrayList<Loan> memberLoans = new ArrayList<Loan>();
+    public List<Loan> findLoansByMemberId(int memberId){
+        ArrayList<Loan> memberLoans = new ArrayList<>();
         for (Loan loan : loans){
             if (loan.getMember().memberId() == memberId){
                 memberLoans.add(loan);
