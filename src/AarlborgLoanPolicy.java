@@ -6,8 +6,9 @@ public class AarlborgLoanPolicy implements LoanPolicy{
     public boolean canLoan(Member member, Resource resource, List<Loan> loans) {
         int count = 0;
         for (Loan loan : loans){
-            if ((loan.getMember().memberId() == member.memberId()) &&
-                    (loan.getResource() instanceof Movie) || (loan.getResource() instanceof VideoGame)){
+            if (loan.getMember().memberId() == member.memberId()
+                    && (loan.getResource() instanceof Movie
+                    || loan.getResource() instanceof VideoGame)) {
                 count++;
             }
         }

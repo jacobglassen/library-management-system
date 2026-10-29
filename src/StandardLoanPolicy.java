@@ -10,6 +10,6 @@ public class StandardLoanPolicy implements LoanPolicy{
 
     @Override
     public LocalDate calculateDueDate(Resource resource, LocalDate loanDate) {
-        return LocalDate.now().plusDays(30);
+        return loanDate.plusDays(30);
     }
 }
