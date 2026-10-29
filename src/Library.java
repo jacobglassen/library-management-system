@@ -103,8 +103,8 @@ public class Library {
     }
     public void createResource(){
         Book book1 = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
-        Movie movie1 = new Movie(20, "Human Centipede", "MF Studios", "Mads Frahm", 120.20);
-        VideoGame videoGame1 = new VideoGame(50, "abc", "def", "fld,sæfs");
+        Movie movie1 = new Movie(20, "Human Centipede", "TBD", "TBD", 120.20);
+        VideoGame videoGame1 = new VideoGame(50, "TBD", "TBD", "TBD");
         AudioBook audioBook1 = new AudioBook(67, "Babadook", 500, "Dixen Myers");
         resources.add(book1);
         resources.add(movie1);
