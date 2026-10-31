@@ -4,6 +4,9 @@ public class AudioBook extends Resource {
         super(identifier, title, creator);
         this.duration = duration;
     }
+    public int getDuration(){
+        return duration;
+    }
     @Override
     public String toString(){
         return String.format("""

@@ -6,6 +6,12 @@ double length;
         this.director = director;
         this.length = length;
     }
+    public String getDirector(){
+        return director;
+    }
+    public double getLength(){
+        return length;
+    }
     @Override
     public String toString(){
         return String.format("""
