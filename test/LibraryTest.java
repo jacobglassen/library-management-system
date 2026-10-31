@@ -58,5 +58,22 @@ public class LibraryTest {
         //Assert
         assertEquals(LoanResult.SUCCESS, result);
     }
+    @Test
+    void testFailedActionWontChangeLibraryState(){
+        //Act
+        LoanResult result = library.loanResource(6732, 3627);
+
+        //Assert
+        assertEquals(LoanResult.MATERIAL_NOT_FOUND, result);
+        assertTrue(library.getLoans().isEmpty());
+    }
+    @Test
+    void testCanOnlyReturnIfThereIsAnActiveLoan(){
+        //Act
+        boolean returnBook = library.returnBook(9780, 1);
+
+        //Assert
+        assertFalse(returnBook);
+    }
 
 }
