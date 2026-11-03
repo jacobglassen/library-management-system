@@ -19,6 +19,11 @@ public class Loan {
     public Member getMember(){
         return member;
     }
+
+    public LocalDate getBorrowedDate() {
+        return borrowedDate;
+    }
+
     public LocalDate getDueDate(){
         return dueDate;
     }
