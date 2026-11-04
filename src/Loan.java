@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-public class Loan {
+public class Loan implements Comparable<Loan>{
     final Resource resource;
     final Member member;
     final LocalDate borrowedDate;
@@ -32,5 +32,10 @@ public class Loan {
     }
     public String toString(){
         return (getResource() + "\n" + getMember() + "\n" + "afleveringsfrist " + getDueDate() + "\n");
+    }
+
+    @Override
+    public int compareTo(Loan o) {
+        return this.dueDate.compareTo(o.dueDate);
     }
 }
