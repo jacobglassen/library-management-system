@@ -9,11 +9,14 @@ public class LibraryLoader {
 
     private final CsvMapper csvMapper;
     private final Library library;
+    private final Path libraryPath;
 
     public LibraryLoader(CsvMapper csvMapper,
-                         Library library) {
+                         Library library,
+                         Path libraryPath) {
         this.csvMapper = csvMapper;
         this.library = library;
+        this.libraryPath = libraryPath;
     }
 
     public void loadAll() {
@@ -70,7 +73,7 @@ public class LibraryLoader {
     public List<Member> loadMembers(String filename)
             throws IOException {
 
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         List<Member> members = new ArrayList<>();
 
         try (BufferedReader reader =
@@ -89,7 +92,7 @@ public class LibraryLoader {
     public List<Loan> loadLoans(String filename)
             throws IOException {
 
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         List<Loan> loans = new ArrayList<>();
 
         try (BufferedReader reader =
@@ -107,7 +110,7 @@ public class LibraryLoader {
 
     public List<Book> loadBooks(String filename) throws IOException {
 
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         List<Book> books = new ArrayList<>();
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -123,7 +126,7 @@ public class LibraryLoader {
     }
     public List<Movie> loadMovies(String filename) throws IOException {
 
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         List<Movie> movies = new ArrayList<>();
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -139,7 +142,7 @@ public class LibraryLoader {
     }
     public List<AudioBook> loadAudiobooks(String filename) throws IOException {
 
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         List<AudioBook> audioBooks = new ArrayList<>();
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -155,7 +158,7 @@ public class LibraryLoader {
     }
     public List<VideoGame> loadVideoGames(String filename) throws IOException {
 
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         List<VideoGame> videoGames = new ArrayList<>();
 
         try (BufferedReader reader = Files.newBufferedReader(path)) {
