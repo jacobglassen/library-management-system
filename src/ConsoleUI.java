@@ -3,39 +3,46 @@ import java.util.ArrayList;
 public class ConsoleUI {
     private final Library library;
 
-    public ConsoleUI(Library library){
+    public ConsoleUI(Library library) {
         this.library = library;
     }
-    public void run(){
+
+    public void run() {
 //        library.createMembers();
 //        library.createResource();
         boolean running = true;
-        while (running){
+        while (running) {
             showMenu();
             int choice = Integer.parseInt(IO.readln("Indtast hvilken menu, du vil tilgå: "));
-            switch (choice){
+            switch (choice) {
                 case 1 -> borrowResource();
                 case 2 -> returnResource();
                 case 3 -> showLoans();
+                case 4 -> createMember();
+                case 5 -> createBook();
                 case 0 -> running = false;
                 default -> IO.println("Ugyldigt valg. Prøv igen");
             }
         }
     }
-    private void showMenu(){
+
+    private void showMenu() {
         IO.println();
         IO.println("1. Lån");
         IO.println("2. Aflever");
         IO.println("3. Vis alle lån");
+        IO.println("4. Opret medlem");
+        IO.println("5. Opret bog");
         IO.println("0. Afslut");
         IO.println();
     }
-    private void borrowResource(){
+
+    private void borrowResource() {
         int id = Integer.parseInt(IO.readln("Angiv materialets ID: "));
         int memberId = Integer.parseInt(IO.readln("Angiv dit medlemsnummer: "));
         LoanResult isLoaned = library.loanResource(id, memberId);
 
-        switch (isLoaned){
+        switch (isLoaned) {
             case SUCCESS -> IO.println("Lån registreret");
             case ALREADY_LOANED -> IO.println("Materialet er allerede udlånt");
             case MATERIAL_NOT_FOUND -> IO.println("Dette materiale findes ikke");
@@ -43,7 +50,8 @@ public class ConsoleUI {
             case NOT_ALLOWED -> IO.println("Dette materiale kan desværre ikke udlånes");
         }
     }
-    private void returnResource(){
+
+    private void returnResource() {
         int id = Integer.parseInt(
                 IO.readln("Angiv materialets ID: ")
         );
@@ -54,25 +62,50 @@ public class ConsoleUI {
 
         boolean canReturn = library.returnBook(id, memberId);
 
-        if (canReturn){
+        if (canReturn) {
             IO.println("Aflevering registreret");
         } else {
             IO.println("Der er sket en fejl");
         }
     }
-    private void showLoans(){
+
+    private void showLoans() {
         int memberId = Integer.parseInt(IO.readln("Indtast medlemsnummer: "));
         ArrayList<Loan> loans = library.findLoansByMemberId(memberId);
 
-        if (loans.isEmpty()){
+        if (loans.isEmpty()) {
             IO.println("Ingen lån fundet for dette medlem");
         } else {
             IO.println("Lån for medlem " + memberId + ":");
             IO.println("-------------");
-            for (Loan loan : loans){
+            for (Loan loan : loans) {
                 IO.println(loan);
             }
         }
+    }
+    public void createMember(){
+        String name = (IO.readln("Angiv navn: "));
+        int memberId = Integer.parseInt(IO.readln("Angiv medlemsnummer: "));
+        if (library.doesMemberIdExist(memberId)){
+            IO.println("Medlemsnummer findes allerede. Prøv igen");
+        }
+        else {
+            library.createMemberInConsole(name, memberId);
+            IO.println("Medlem oprettet");
         }
     }
+    public void createBook(){
+        String title = IO.readln("Angiv bogens titel: ");
+        String creator = IO.readln("Angiv bogens forfatter: ");
+        int bookId = Integer.parseInt(IO.readln("Angiv bogens ISBN: "));
+        int pages = Integer.parseInt(IO.readln("Angiv bogens sidetal: "));
+        if (library.doesResourceIdExist(bookId)){
+            IO.println("ISBN findes allerede. Prøv igen");
+        }
+        else {
+            library.createBookInConsole(bookId, title, creator, pages);
+            IO.println("Bog oprettet");
+        }
+    }
+}
 
