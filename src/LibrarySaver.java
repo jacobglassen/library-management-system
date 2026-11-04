@@ -10,11 +10,17 @@ import java.util.List;
 public class LibrarySaver {
 
     private final CsvMapper csvMapper;
-    private Library library;
+    private final Path libraryPath;
 
-    public LibrarySaver(CsvMapper csvMapper){
+    public LibrarySaver(CsvMapper csvMapper,
+                        Path libraryPath){
         this.csvMapper = csvMapper;
+        this.libraryPath = libraryPath;
     }
+    public LibrarySaver(CsvMapper csvMapper) {
+        this(csvMapper, Path.of("."));
+    }
+
     public void saveAll(Library library) {
 
         try {
