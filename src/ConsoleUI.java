@@ -109,21 +109,6 @@ public class ConsoleUI {
             IO.println("Bog oprettet");
         }
     }
-    public void sortLibrary(){
-        showMenuForSorting();
-        int choice = Integer.parseInt(IO.readln("Angiv venligst dit valg: "));
-        switch (choice){
-            case 1 -> library.sortMembersById();
-            case 2 -> library.sortResourcesByCreator();
-            case 3 -> library.sortResourcesByTitle();
-            case 4 -> library.sortLoansByLoanDate();
-            case 0 -> {
-                return;
-            }
-            default -> IO.println("Angiv et gyldigt input");
-
-        }
-    }
     public void showMenuForSorting(){
         IO.println();
         IO.println("1. Sorter medlemmer efter ID");
@@ -132,6 +117,23 @@ public class ConsoleUI {
         IO.println("4. Sorter lån efter lånedato");
         IO.println("0. Gå tilbage");
         IO.println();
+    }
+    public void sortLibrary() {
+        while (true) {
+            showMenuForSorting();
+            int choice = Integer.parseInt(IO.readln("Angiv venligst dit valg: "));
+            switch (choice) {
+                case 1 -> library.sortMembersById();
+                case 2 -> library.sortResourcesByCreator();
+                case 3 -> library.sortResourcesByTitle();
+                case 4 -> library.sortLoansByLoanDate();
+                case 0 -> {
+                    return;
+                }
+                default -> IO.println("Angiv et gyldigt input");
+
+            }
+        }
     }
 }
 
