@@ -138,6 +138,41 @@ public class Library {
         }
         return movies;
     }
+    public boolean doesMemberIdExist(int memberId){
+        for (Member member : members){
+            if (member.memberId() == memberId){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void createMemberInConsole(String name, int memberId){
+        if (!doesMemberIdExist(memberId)){
+            members.add(new Member(name, memberId));
+        }
+    }
+    public boolean doesResourceIdExist(int resourceId){
+        for (Resource resource : resources){
+            if (resource.getIdentifier() == resourceId){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void createBookInConsole(int identifier, String title, String creator, int pages){
+        if (!doesResourceIdExist(identifier)){
+            resources.add(new Book(identifier, title, creator, pages));
+        }
+    }
+    public ArrayList<Book> searchLibraryForResources(){
+        ArrayList<Book> books = new ArrayList<>();
+        for (Resource resource : resources){
+            if (resource instanceof Book){
+                books.add((Book) resource);
+            }
+        }
+        return books;
+    }
     public void createResource(){
         Book book1 = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
         Movie movie1 = new Movie(20, "Human Centipede", "TBD", "TBD", 120.20);
