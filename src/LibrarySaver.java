@@ -54,7 +54,7 @@ public class LibrarySaver {
         }
     }
     public void saveMembers(List<Member> members, String filename) throws IOException{
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         try(BufferedWriter writer = Files.newBufferedWriter(path)){
             for (Member member : members){
                 writer.write(csvMapper.toCsv(member));
@@ -63,7 +63,7 @@ public class LibrarySaver {
         }
     }
     public void saveLoans(List<Loan> loans, String filename) throws IOException{
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         try(BufferedWriter writer = Files.newBufferedWriter(path)){
             for (Loan loan : loans){
                 writer.write(csvMapper.toCsv(loan));
@@ -72,7 +72,7 @@ public class LibrarySaver {
         }
     }
     public void saveBooks(List<Book> books, String filename) throws IOException{
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         try(BufferedWriter writer = Files.newBufferedWriter(path)){
             for (Book book : books){
                 writer.write(csvMapper.toCsv(book));
@@ -81,7 +81,7 @@ public class LibrarySaver {
         }
     }
     public void saveMovies(List<Movie> movies, String filename) throws IOException{
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         try(BufferedWriter writer = Files.newBufferedWriter(path)){
             for (Movie movie : movies){
                 writer.write(csvMapper.toCsv(movie));
@@ -90,7 +90,7 @@ public class LibrarySaver {
         }
     }
     public void saveAudiobooks(List<AudioBook> audioBooks, String filename) throws IOException{
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         try(BufferedWriter writer = Files.newBufferedWriter(path)){
             for (AudioBook audioBook : audioBooks){
                 writer.write(csvMapper.toCsv(audioBook));
@@ -99,7 +99,7 @@ public class LibrarySaver {
         }
     }
     public void saveVideoGames(List<VideoGame> videoGames, String filename) throws IOException{
-        Path path = Path.of(filename);
+        Path path = libraryPath.resolve(filename);
         try(BufferedWriter writer = Files.newBufferedWriter(path)){
             for (VideoGame videoGame : videoGames){
                 writer.write(csvMapper.toCsv(videoGame));
