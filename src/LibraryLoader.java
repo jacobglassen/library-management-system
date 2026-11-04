@@ -11,6 +11,9 @@ public class LibraryLoader {
     public LibraryLoader(CsvMapper csvMapper){
         this.csvMapper = csvMapper;
     }
+    public void loadAll(){
+
+    }
 
     public List<Member> loadMembers(String filename) throws IOException{
         Path path = Path.of(filename);

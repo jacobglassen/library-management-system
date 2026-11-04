@@ -101,6 +101,41 @@ public class Library {
             IO.println(member);
         }
     }
+    public List<Book> getBooks(){
+        List<Book> books = new ArrayList<>();
+        for (Resource resource : resources){
+            if (resource instanceof Book)
+                books.add((Book) resource);
+        }
+        return books;
+    }
+    public List<VideoGame> getVideoGames(){
+        List<VideoGame> videoGames = new ArrayList<>();
+        for (Resource resource : resources){
+            if (resource instanceof VideoGame){
+                videoGames.add((VideoGame) resource);
+            }
+        }
+        return videoGames;
+    }
+    public List<AudioBook> getAudiobooks(){
+        List<AudioBook> audioBooks = new ArrayList<>();
+        for (Resource resource : resources){
+            if (resource instanceof AudioBook){
+                audioBooks.add((AudioBook) resource);
+            }
+        }
+        return audioBooks;
+    }
+    public List<Movie> getMovies(){
+        List<Movie> movies = new ArrayList<>();
+        for (Resource resource : resources){
+            if (resource instanceof Movie){
+                movies.add((Movie) resource);
+            }
+        }
+        return movies;
+    }
     public void createResource(){
         Book book1 = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
         Movie movie1 = new Movie(20, "Human Centipede", "TBD", "TBD", 120.20);
@@ -121,6 +156,7 @@ public class Library {
         members.add(member2);
         members.add(member3);
     }
+
 
 }
 
