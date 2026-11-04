@@ -173,6 +173,18 @@ public class Library {
         }
         return books;
     }
+    public void sortMembersById(){
+        members.sort(null);
+    }
+    public void sortLoansByLoanDate(){
+        loans.sort(new LoanDateComparator());
+    }
+    public void sortResourcesByCreator(){
+        resources.sort(new ResourceCreatorComparator());
+    }
+    public void sortResourcesByTitle(){
+        resources.sort(new ResourceTitleComparator());
+    }
     public void createResource(){
         Book book1 = new Book(9780, "Slaughterhouse Five", "Kurt Vonnegut", 475);
         Movie movie1 = new Movie(20, "Human Centipede", "TBD", "TBD", 120.20);

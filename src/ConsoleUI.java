@@ -20,6 +20,7 @@ public class ConsoleUI {
                 case 3 -> showLoans();
                 case 4 -> createMember();
                 case 5 -> createBook();
+                case 6 -> sortLibrary();
                 case 0 -> running = false;
                 default -> IO.println("Ugyldigt valg. Prøv igen");
             }
@@ -33,6 +34,7 @@ public class ConsoleUI {
         IO.println("3. Vis alle lån");
         IO.println("4. Opret medlem");
         IO.println("5. Opret bog");
+        IO.println("6. Sorter lister");
         IO.println("0. Afslut");
         IO.println();
     }
@@ -106,6 +108,30 @@ public class ConsoleUI {
             library.createBookInConsole(bookId, title, creator, pages);
             IO.println("Bog oprettet");
         }
+    }
+    public void sortLibrary(){
+        showMenuForSorting();
+        int choice = Integer.parseInt(IO.readln("Angiv venligst dit valg: "));
+        switch (choice){
+            case 1 -> library.sortMembersById();
+            case 2 -> library.sortResourcesByCreator();
+            case 3 -> library.sortResourcesByTitle();
+            case 4 -> library.sortLoansByLoanDate();
+            case 0 -> {
+                return;
+            }
+            default -> IO.println("Angiv et gyldigt input");
+
+        }
+    }
+    public void showMenuForSorting(){
+        IO.println();
+        IO.println("1. Sorter medlemmer efter ID");
+        IO.println("2. Sorter materialer efter forfatter");
+        IO.println("3. Sorter materialer efter titel");
+        IO.println("4. Sorter lån efter lånedato");
+        IO.println("0. Gå tilbage");
+        IO.println();
     }
 }
 
