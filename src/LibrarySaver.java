@@ -11,16 +11,38 @@ public class LibrarySaver {
 
     private final CsvMapper csvMapper;
     private Library library;
+
     public LibrarySaver(CsvMapper csvMapper){
         this.csvMapper = csvMapper;
     }
-    public void saveAll(Library library){
+    public void saveAll(Library library) {
+
         try {
-            saveMembers(library.getMembers(), "members.csv");
-            saveBooks(library.getBooks(), "books.csv");
-            saveAudiobooks(library.getAudiobooks(), "audiobooks.csv");
-            saveMovies(library.getMovies(), "movies.csv");
-            saveVideoGames(library.getVideoGames(), "videogames.csv");
+
+            saveMembers(
+                    library.getMembers(),
+                    "members.csv");
+
+            saveLoans(
+                    library.getLoans(),
+                    "loans.csv");
+
+            saveBooks(
+                    library.getBooks(),
+                    "books.csv");
+
+            saveAudiobooks(
+                    library.getAudiobooks(),
+                    "audiobooks.csv");
+
+            saveMovies(
+                    library.getMovies(),
+                    "movies.csv");
+
+            saveVideoGames(
+                    library.getVideoGames(),
+                    "videogames.csv");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -12,7 +12,9 @@ public class Library {
     public Library(LoanPolicy loanPolicy) {
         this.loanPolicy = loanPolicy;
     }
-
+    public void addLoan(Loan loan) {
+        loans.add(loan);
+    }
     public void addMember(Member member) {
         members.add(member);
     }
@@ -156,7 +158,4 @@ public class Library {
         members.add(member2);
         members.add(member3);
     }
-
-
 }
-

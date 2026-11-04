@@ -7,8 +7,8 @@ public class ConsoleUI {
         this.library = library;
     }
     public void run(){
-        library.createMembers();
-        library.createResource();
+//        library.createMembers();
+//        library.createResource();
         boolean running = true;
         while (running){
             showMenu();

@@ -30,10 +30,13 @@ public class LibrarySaverTest {
                 Donald Trump,2
                 Min Mor,3
                 """;
-
-        var actual = Files.readString(Path.of("test-members.csv"));
+        var actual = Files.readString(Path.of("test-members.csv"))
+                .replace("\r\n", "\n");
 
         assertEquals(expected, actual);
+//        var actual = Files.readString(Path.of("test-members.csv"));
+//
+//        assertEquals(expected, actual);
     }
     @Test
     void testSaveLoans() throws IOException {
